@@ -9,7 +9,7 @@ namespace MovieMetadata
     {
         static void Main(string[] args)
         {
-            string path = @"..\..\..\CSV Files\movies_metadata.csv";
+            string path = @"C:\Users\Jadon\Downloads\MovieCSV\movies_metadata.csv"; //Change path to match your own
 
             using (TextFieldParser csvParser = new TextFieldParser(path))
             {
