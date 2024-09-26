@@ -29,8 +29,9 @@ namespace MovieMetadata
                         MetadataModel movie = new MetadataModel()
                         {
                             Movie_ID = Int32.Parse(fields[5]),
+                            Tagline = fields[19],
                             Homepage = fields[4],
-                            PosterPath = fields[11]
+                            PosterURL = fields[11]
                         };
 
                         if (!fields[6].Equals(""))
@@ -44,7 +45,7 @@ namespace MovieMetadata
 
                         DateTime date;
                             bool isDate = DateTime.TryParse(fields[14], out date);
-                            if (isDate) movie.ReleaseDate = date;
+                            if (isDate) movie.Release_Date = date;
 
                         Double runtime;
                             bool isRunTime = Double.TryParse(fields[16], out runtime);

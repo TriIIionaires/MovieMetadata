@@ -8,26 +8,18 @@ namespace MovieMetadata.Models
 {
     public class MetadataModel
     {
-        
-        public enum Ratings
-        {
-            G,
-            PG,
-            PG13,
-            R
-        }
-
         public int ID { get; set; }
         public int Movie_ID { get; set; }
         public int IMDB_ID { get; set; }
         public string Title { get; set; } = "Unknown Title";
         public List<GenreModel> Genres { get; set; }
-        public DateTime ReleaseDate { get; set; }
+        public DateTime Release_Date { get; set; }
         public int RunTime { get; set; }
-        public Ratings Rating { get; set; }
+        public double Rating { get; set; }
+        public string Tagline { get; set; }
         public string Description { get; set; } = "No description provided.";
         public string Homepage { get; set; }
-        public string PosterPath { get; set; }
+        public string PosterURL { get; set; }
 
         public override string ToString()
         {
@@ -47,7 +39,7 @@ namespace MovieMetadata.Models
                 output += "Genre Unavailable";
             }
             
-            output += $"\n{ReleaseDate.ToShortDateString()} \u00B7 {Rating} \u00B7 {RunTime / 60}h {RunTime % 60}m\n{Description}\nID: {ID} | Movie ID: {Movie_ID} | IMDB ID: {IMDB_ID}\n";
+            output += $"\n{Release_Date.ToShortDateString()} \u00B7 {Rating:n0}/5 \u00B7 {RunTime / 60}h {RunTime % 60}m\n{Description}\nID: {ID} | Movie ID: {Movie_ID} | IMDB ID: {IMDB_ID}\n";
 
             return output;
         }
