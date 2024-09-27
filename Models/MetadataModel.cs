@@ -8,6 +8,14 @@ namespace MovieMetadata.Models
 {
     public class MetadataModel
     {
+        public enum Ratings
+        {
+            G,
+            PG,
+            PG13,
+            R
+        }
+
         public int ID { get; set; }
         public int Movie_ID { get; set; }
         public int IMDB_ID { get; set; }
@@ -15,6 +23,7 @@ namespace MovieMetadata.Models
         public List<GenreModel> Genres { get; set; }
         public DateTime Release_Date { get; set; }
         public int RunTime { get; set; }
+        public Ratings MPAA_RatingID { get; set; }
         public double Rating { get; set; }
         public int Votes { get; set; }
         public string Tagline { get; set; }
@@ -40,7 +49,7 @@ namespace MovieMetadata.Models
                 output += "Genre Unavailable";
             }
             
-            output += $"\n{Release_Date.ToShortDateString()} \u00B7 {RunTime / 60}h {RunTime % 60}m \u00B7 {Rating}/10 ({Votes} votes)\n{Description}\nID: {ID} | Movie ID: {Movie_ID} | IMDB ID: {IMDB_ID}\n";
+            output += $"\n{Release_Date.ToShortDateString()} \u00B7 {RunTime / 60}h {RunTime % 60}m \u00B7 {MPAA_RatingID} \u00B7 {Rating}/10 ({Votes} votes)\n{Description}\nID: {ID} | Movie ID: {Movie_ID} | IMDB ID: {IMDB_ID}\n";
 
             return output;
         }

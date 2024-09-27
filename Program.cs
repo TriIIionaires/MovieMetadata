@@ -96,11 +96,14 @@ namespace MovieMetadata
             }*/
             
             List<MetadataModel> movies = _db.ReadAllMovies();
-
-            foreach (MetadataModel movie in movies)
+            
+            if (movies != null)
             {
-                movie.Genres = _db.GetMovieGenres(movie.Movie_ID);
-                Console.WriteLine(movie);
+                foreach (MetadataModel movie in movies)
+                {
+                    movie.Genres = _db.GetMovieGenres(movie.Movie_ID);
+                    Console.WriteLine(movie);
+                }
             }
 
         }
