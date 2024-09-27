@@ -1,5 +1,5 @@
 ﻿
-namespace MovieData.Data
+namespace MovieMetadata.Data
 {
     public interface ISqlDataAccess
     {

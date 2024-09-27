@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using Dapper;
 using MySql.Data.MySqlClient;
 
-namespace MovieData.Data
+namespace MovieMetadata.Data
 {
     public class SqlDataAccess : ISqlDataAccess
     {
-        private string connectionString = "server=localhost; port=3306; uid=TheaterUser; pwd=AppDevRules!; database=theater";
+        private string connectionString = "server=localhost; port=3306; uid=TheaterUser; pwd=AppDevRules!; database=theater_metadata";
 
         public List<T> LoadData<T, U>(string sql, U parameters)
         {
