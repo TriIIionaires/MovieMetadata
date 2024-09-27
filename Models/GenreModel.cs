@@ -14,7 +14,7 @@ namespace MovieMetadata.Models
 
         public override string ToString()
         {
-            return $"{Genre}";
+            return $"{Genre_ID} {Genre}";
         }
     }
 }

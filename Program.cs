@@ -86,7 +86,7 @@ namespace MovieMetadata
                         if (genres.Count > 0)
                         {
                             movie.Genres = genres;
-                            _db.AssignGenre(genres);
+                            _db.CreateAssignGenre(genres);
                         }
 
                         _db.CreateMovie(movie);

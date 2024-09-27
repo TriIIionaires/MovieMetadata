@@ -64,7 +64,7 @@ namespace MovieMetadata.Data
             return null;
         }
 
-        public void AssignGenre(List<GenreModel> genres)
+        public void CreateAssignGenre(List<GenreModel> genres)
         {
             string sql = "INSERT INTO assign_genre (movie_id, genre_id) VALUES (@Movie_ID, @Genre_ID)";
 

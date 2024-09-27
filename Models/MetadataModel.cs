@@ -33,7 +33,7 @@ namespace MovieMetadata.Models
                     output += $"{genre.Genre}, ";
                 }
 
-                output = output.Substring(0, output.Length - 2); // Omits last comma and space
+                output = output.Substring(0, output.Length - 2); // Omits last comma and space 
 
             } else
             {
