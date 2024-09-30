@@ -16,7 +16,7 @@ namespace MovieMetadata.Data
             string sql = "SELECT mmd_movie.ID, Movie_ID, IMDB_ID, Title, Release_Date, RunTime, mmd_ratings.mpaa_rating, Rating, Votes, Tagline, Description, Homepage, PosterURL " +
               "FROM mmd_movie " +
               "INNER JOIN mmd_ratings ON mmd_movie.MPAA_RatingID=mmd_ratings.mpaa_ratingid";
-            
+
             IEnumerable<MetadataModel> result = _db.LoadData<MetadataModel, dynamic>(sql, new { });
             List<MetadataModel> movies = result.ToList();
             
@@ -37,14 +37,14 @@ namespace MovieMetadata.Data
 
         public void CreateMovie(MetadataModel movie)
         {
-            string sql = "INSERT INTO mmd_movie (Movie_ID, IMDB_ID, Title, Release_Date, RunTime, MPAA_RatingID, Rating, Votes, Tagline, Description, Homepage, PosterURL) VALUES (@Movie_ID, @IMDB_ID, @Title, @Release_Date, @RunTime, @MPAA_RatingID, @Rating, @Votes, @Tagline, @Description, @Homepage, @PosterURL)";
+            string sql = "INSERT INTO mmd_movie (Movie_ID, IMDB_ID, Title, Release_Date, RunTime, MPAA_RatingID, Rating, Votes, Tagline, Description, Homepage, PosterURL) VALUES (@Movie_ID, @IMDB_ID, @Title, @Release_Date, @RunTime, @MPAA_Rating, @Rating, @Votes, @Tagline, @Description, @Homepage, @PosterURL)";
 
             _db.SaveData(sql, movie);
         }
 
         public void UpdateMovie(MetadataModel movie)
         {
-            string sql = "UPDATE mmd_movie SET Movie_ID = @Movie_ID, IMDB_ID = @IMDB_ID, Title = @Title, RunTime = @RunTime, MPAA_RatingID = @MPAA_RatingID, Rating = @Rating, Votes = @Votes, Tagline = @Tagline, Description = @Description, Homepage = @Homepage, PosterURL = @PosterURL WHERE mmd_movie.ID = @ID";
+            string sql = "UPDATE mmd_movie SET Movie_ID = @Movie_ID, IMDB_ID = @IMDB_ID, Title = @Title, RunTime = @RunTime, MPAA_RatingID = @MPAA_Rating, Rating = @Rating, Votes = @Votes, Tagline = @Tagline, Description = @Description, Homepage = @Homepage, PosterURL = @PosterURL WHERE mmd_movie.ID = @ID";
 
             _db.SaveData(sql, movie);
         }

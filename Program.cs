@@ -2,6 +2,8 @@
 using Newtonsoft.Json;
 using MovieMetadata.Models;
 using MovieMetadata.Data;
+using System.Runtime.CompilerServices;
+using System.Net.Http.Json;
 
 namespace MovieMetadata
 {
@@ -93,7 +95,48 @@ namespace MovieMetadata
                 }
             }*/
             
-            /*List<MetadataModel> movies = _db.ReadAllMovies();
+            
+            /*HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://www.omdbapi.com");
+
+            for (int i = 0; i <= 32262; i++)
+            {
+                MetadataModel movie = _db.ReadMovieByID(i);
+                if (movie != null)
+                {
+                    if (!movie.IMDB_ID.Equals(""))
+                    {
+                        HttpResponseMessage response = client.GetAsync($"?i={movie.IMDB_ID}&apikey=").Result;
+                        if (response.IsSuccessStatusCode)
+                        {
+                            string data = response.Content.ReadAsStringAsync().Result;
+                            dynamic json = JsonConvert.DeserializeObject(data);
+                            string rating = json.Rated.ToString();
+
+                            if (rating.Equals("R"))
+                            {
+                                movie.MPAA_RatingID = MetadataModel.Ratings.R;
+                            }
+                            else if (rating.Equals("PG-13"))
+                            {
+                                movie.MPAA_RatingID = MetadataModel.Ratings.PG13;
+                            }
+                            else if (rating.Equals("PG"))
+                            {
+                                movie.MPAA_RatingID = MetadataModel.Ratings.PG;
+                            }
+                            else
+                            {
+                                movie.MPAA_RatingID = MetadataModel.Ratings.G;
+                            }
+
+                            _db.UpdateMovie(movie);
+                        }
+                    }
+                }
+            }*/
+
+            List<MetadataModel> movies = _db.ReadAllMovies();
             
             if (movies != null)
             {
@@ -102,8 +145,7 @@ namespace MovieMetadata
                     movie.Genres = _db.GetMovieGenres(movie.Movie_ID);
                     Console.WriteLine(movie);
                 }
-            }*/
-
+            }
         }
     }
 }
