@@ -32,13 +32,11 @@ namespace MovieMetadata
                         MetadataModel movie = new MetadataModel()
                         {
                             Movie_ID = Int32.Parse(fields[5]),
+                            IMDB_ID = fields[6],
                             Tagline = fields[19],
                             Homepage = fields[4],
                             PosterURL = fields[11]
                         };
-
-                        if (!fields[6].Equals(""))
-                            movie.IMDB_ID = Int32.Parse(fields[6].Substring(2)); // Takes out "tt" in front of IMDB ID
 
                         string title = "Unknown Title";
                             if (!fields[8].Equals("")) title = fields[8];
@@ -95,7 +93,7 @@ namespace MovieMetadata
                 }
             }*/
             
-            List<MetadataModel> movies = _db.ReadAllMovies();
+            /*List<MetadataModel> movies = _db.ReadAllMovies();
             
             if (movies != null)
             {
@@ -104,7 +102,7 @@ namespace MovieMetadata
                     movie.Genres = _db.GetMovieGenres(movie.Movie_ID);
                     Console.WriteLine(movie);
                 }
-            }
+            }*/
 
         }
     }

@@ -18,7 +18,7 @@ namespace MovieMetadata.Models
 
         public int ID { get; set; }
         public int Movie_ID { get; set; }
-        public int IMDB_ID { get; set; }
+        public string IMDB_ID { get; set; }
         public string Title { get; set; }
         public List<GenreModel> Genres { get; set; }
         public DateTime Release_Date { get; set; }
